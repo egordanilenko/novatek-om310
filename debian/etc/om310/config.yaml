@@ -1,0 +1,14 @@
+om310:
+  overload_relay:
+    relay_gpio: 17
+    disable_time_sec: 300
+  device:
+    instrument_port: "/dev/ttyUSB0"
+    baudrate: 9600
+  lines:
+    l1:
+      current_limit: 14
+    l2:
+      current_limit: 14
+    l3:
+      current_limit: 14

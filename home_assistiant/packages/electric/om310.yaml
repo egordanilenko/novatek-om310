@@ -1,0 +1,65 @@
+om310:
+  sensor:
+    - platform: rest
+      resource: http://10.170.248.164/
+      name: om310
+      method: GET
+      timeout: 30
+      scan_interval: 10
+      force_update: true
+      headers:
+        Content-Type: application/json
+      value_template: '{{ value_json.ok }}'
+      json_attributes:
+        - current_A
+        - power_W
+        - voltage_V
+    - platform: template
+      sensors:
+        l1_current:
+          value_template: "{{ state_attr('sensor.om310','lines')['l1'].current }}"
+          device_class: current
+          friendly_name: 'Фаза 1'
+          unit_of_measurement: 'A'
+        l2_current:
+          value_template: "{{ state_attr('sensor.om310','lines')['l2'].current }}"
+          device_class: current
+          friendly_name: 'Фаза 2'
+          unit_of_measurement: 'A'
+        l3_current:
+          value_template: "{{ state_attr('sensor.om310','lines')['l3'].current }}"
+          device_class: current
+          friendly_name: 'Фаза 3'
+          unit_of_measurement: 'A'
+
+        l1_voltage:
+          value_template: "{{ state_attr('sensor.om310','lines')['l1'].voltage }}"
+          device_class: voltage
+          friendly_name: 'Фаза 1'
+          unit_of_measurement: 'V'
+        l2_voltage:
+          value_template: "{{ state_attr('sensor.om310','lines')['l2'].voltage }}"
+          device_class: voltage
+          friendly_name: 'Фаза 2'
+          unit_of_measurement: 'V'
+        l3_voltage:
+          value_template: "{{ state_attr('sensor.om310','lines')['l3'].voltage }}"
+          device_class: voltage
+          friendly_name: 'Фаза 3'
+          unit_of_measurement: 'V'
+
+        l1_power:
+          value_template: "{{ state_attr('sensor.om310','lines')['l1'].power }}"
+          device_class: power
+          friendly_name: 'Фаза 1'
+          unit_of_measurement: 'W'
+        l2_power:
+          value_template: "{{ state_attr('sensor.om310','lines')['l2'].power }}"
+          device_class: power
+          friendly_name: 'Фаза 2'
+          unit_of_measurement: 'W'
+        l3_power:
+          value_template: "{{ state_attr('sensor.om310','lines')['l3'].power }}"
+          device_class: power
+          friendly_name: 'Фаза 3'
+          unit_of_measurement: 'W'
