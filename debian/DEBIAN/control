@@ -1,0 +1,8 @@
+Package: om-310
+Version: APP_VERSION
+Section: Home automation
+Priority: optional
+Architecture: armhf
+Depends: python (>=3.7), python3-gpiozero(>=1.5.1),python3-yaml (>=3.13), python3-gpiozero (>=1.5.1), python3-flask (>=1.0.2)
+Maintainer: Egor Danilenko <ed@tvip.ru>
+Description: Channel manager for TVIP Mira with flussonic and tvip-tms support

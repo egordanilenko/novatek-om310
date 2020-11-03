@@ -1,7 +1,7 @@
 om310:
   sensor:
     - platform: rest
-      resource: http://10.170.248.164/
+      resource: http://{server_address}/state.json
       name: om310
       method: GET
       timeout: 30
